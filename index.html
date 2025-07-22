@@ -4,35 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>散焦楼のホームページ</title>
-    <link rel="icon" href="Self-Portrait.png" type="image/png">
+    <link rel="icon" href="self-portrait.png" type="image/png">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter & Noto Sans JP -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Custom Styles -->
     <style>
-        /* フォント設定 */
         body {
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* 背景のドット柄 */
         .dotted-background {
             background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
             background-size: 1rem 1rem;
         }
 
-        /* アニメーション用 */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -47,7 +40,6 @@
             animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* ナビゲーションバーの背景ブラー */
         .navbar-blur {
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -56,12 +48,10 @@
 </head>
 <body class="bg-gray-900 text-gray-200 dotted-background">
 
-    <!-- ===== ローディング画面 ===== -->
     <div id="loading-screen" class="fixed inset-0 bg-gray-900 z-50 flex justify-center items-center transition-opacity duration-500">
         <div class="text-white text-2xl font-bold animate-pulse">Now Loading...</div>
     </div>
 
-    <!-- ===== ナビゲーションバー ===== -->
     <nav id="navbar" class="navbar-blur bg-gray-900/70 sticky top-0 z-40 transition-all duration-300">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold text-white">散焦楼HP</a>
@@ -79,7 +69,6 @@
                 </button>
             </div>
         </div>
-        <!-- モバイルメニュー -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
              <a href="#about" class="nav-link block py-2 text-gray-300 hover:text-cyan-400 transition">自己紹介</a>
              <a href="#career" class="nav-link block py-2 text-gray-300 hover:text-cyan-400 transition">認識経歴</a>
@@ -106,13 +95,13 @@
                             散焦楼の<br class="md:hidden">ホームページ
                         </span>
                     </h1>
-                    <p class="mt-6 text-lg text-gray-400">Welcome to my personal website.</p>
+                    <p class="mt-6 text-lg text-gray-400">Welcome to Sansyorou's website.</p>
                 </div>
             </section>
 
             <section id="about" class="py-16 scroll-mt-20 fade-in-section">
                 <div class="bg-gray-800/50 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
-                    <img src="Self-Portrait.png" onerror="this.onerror=null; this.src='https://placehold.co/200x200/1F2937/7DD3FC?text=S';" alt="プロフィール画像" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-cyan-400 shadow-lg">
+                    <img src="self-portrait.png" onerror="this.onerror=null; this.src='https://placehold.co/200x200/1F2937/7DD3FC?text=S';" alt="プロフィール画像" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-cyan-400 shadow-lg">
                     <div class="text-center md:text-left">
                         <h2 class="text-4xl font-bold text-white">散焦楼</h2>
                         <p class="mt-4 text-gray-300 leading-relaxed">
@@ -129,9 +118,6 @@
                         <div class="mb-12 ml-12"><div class="absolute -left-[13px] mt-2 w-6 h-6 bg-gray-900 border-2 border-cyan-400 rounded-full"></div><p class="text-sm text-cyan-400">2024年4月 - 現在</p><h3 class="text-xl font-bold text-white mt-1">月守理工科大学大学院　電脳工学研究科</h3><p class="text-gray-400">システム知性哲学専攻</p></div>
                         <div class="mb-12 ml-12"><div class="absolute -left-[13px] mt-2 w-6 h-6 bg-gray-900 border-2 border-cyan-400 rounded-full"></div><p class="text-sm text-cyan-400">2020年4月 - 2024年3月</p><h3 class="text-xl font-bold text-white mt-1">月守理工科大学　電脳工学部</h3><p class="text-gray-400">システム知性哲学科</p></div>
                         <div class="ml-12"><div class="absolute -left-[13px] mt-2 w-6 h-6 bg-gray-900 border-2 border-cyan-400 rounded-full"></div><p class="text-sm text-cyan-400">2017年4月 - 2020年3月</p><h3 class="text-xl font-bold text-white mt-1">晴守南高等学校　普通科</h3></div>
-                        <!-- 就職先
-                        <div class="ml-12"><div class="absolute -left-[13px] mt-2 w-6 h-6 bg-gray-900 border-2 border-cyan-400 rounded-full"></div><p class="text-sm text-cyan-400">2026年4月 - </p><h3 class="text-xl font-bold text-white mt-1">双守電気通信工業株式会社</h3></div>
-                        -->
                     </div>
                 </div>
             </section>
@@ -149,12 +135,6 @@
                         <li class="p-3 bg-gray-900/50 rounded-lg">2024年3月　高等学校教諭一種免許状(工業)　取得</li>
                         <li class="p-3 bg-gray-900/50 rounded-lg">2024年3月　高等学校教諭一種免許状(情報)　取得</li>
                         <li class="p-3 bg-gray-900/50 rounded-lg">2025年7月　3級ファイナンシャル・プランニング技能士</li>
-                        <!-- 勉強中・取得目標資格
-                        <li class="p-3 bg-gray-900/50 rounded-lg">電気通信主任技術者(伝送交換種)</li>
-                        <li class="p-3 bg-gray-900/50 rounded-lg">2級ファイナンシャル・プランニング技能士</li>
-                        <li class="p-3 bg-gray-900/50 rounded-lg">第一級陸上無線技術士</li>
-                        <li class="p-3 bg-gray-900/50 rounded-lg">2026年3月　高等学校教諭専修免許状(情報)</li>
-                        -->
                     </ul>
                 </div>
             </section>
@@ -205,7 +185,14 @@
 
             <section id="achievements" class="py-16 scroll-mt-20 fade-in-section">
                 <h2 class="text-4xl font-bold text-center text-white mb-12"><span class="text-cyan-400">#</span> 主観実績</h2>
-                <div class="max-w-3xl mx-auto bg-gray-800/50 rounded-xl p-8"><ul class="space-y-4"><li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>自転車で千葉県縦断達成</li><li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>香川県で3食うどん達成</li><li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>山手線沿い1周ラン達成</li><li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>佐賀県内深夜雨中30km踏破</li><li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>ハーフマラソン大会初回2時間以内でゴール</li><li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>5大学の講義を受講して学生証5枚取得</li></ul></div>
+                <div class="max-w-3xl mx-auto bg-gray-800/50 rounded-xl p-8"><ul class="space-y-4">
+                    <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>自転車で千葉県縦断達成</li>
+                    <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>香川県で3食うどん達成</li>
+                    <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>山手線沿い1周ラン達成</li>
+                    <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>佐賀県内深夜雨中30km踏破</li>
+                    <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>ハーフマラソン大会初回2時間以内でゴール</li>
+                    <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>5大学の講義を受講して学生証5枚取得</li>
+                </ul></div>
             </section>
 
             <section id="links" class="py-16 scroll-mt-20 fade-in-section">
