@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>散焦楼のホームページ</title>
-    <link rel="icon" href="self-portrait.png">
+    <link rel="icon" href="Self-Portrait.png" type="image/png">
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -15,17 +15,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
+        /* フォント設定 */
         body {
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
+        /* 背景のドット柄 */
         .dotted-background {
             background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
             background-size: 1rem 1rem;
         }
-	    
+
+        /* アニメーション用 */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -40,6 +43,7 @@
             animation: fadeIn 0.8s ease-out forwards;
         }
 
+        /* ナビゲーションバーの背景ブラー */
         .navbar-blur {
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
@@ -74,7 +78,7 @@
              <a href="#career" class="nav-link block py-2 text-gray-300 hover:text-cyan-400 transition">認識経歴</a>
              <a href="#shikaku" class="nav-link block py-2 text-gray-300 hover:text-cyan-400 transition">取得資格</a>
              <a href="#hobby" class="nav-link block py-2 text-gray-300 hover:text-cyan-400 transition">趣味</a>
-             <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-400 transition">└ アニメ視聴</a>
+             <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-400 transition">└ アニメ</a>
              <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-400 transition">└ 旅行(聖地巡礼)</a>
              <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-400 transition">└ 競馬</a>
              <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-400 transition">└ LLM対話</a>
@@ -92,16 +96,16 @@
                 <div class="relative bg-gray-800/50 rounded-2xl text-center min-h-[70vh] flex flex-col justify-center items-center p-8">
                     <h1 class="text-5xl md:text-7xl font-black text-white leading-tight">
                         <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-                            散焦楼のホームページ
+                            散焦楼の<br class="md:hidden">ホームページ
                         </span>
                     </h1>
-                    <p class="mt-6 text-lg text-gray-400">Welcome to Sansyorou's website.</p>
+                    <p class="mt-6 text-lg text-gray-400">Welcome to my personal website.</p>
                 </div>
             </section>
 
             <section id="about" class="py-16 scroll-mt-20 fade-in-section">
                 <div class="bg-gray-800/50 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
-                    <img src="self-portrait.png" onerror="this.onerror=null; this.src='https://placehold.co/200x200/1F2937/7DD3FC?text=S';" alt="プロフィール画像" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-cyan-400 shadow-lg">
+                    <img src="Self-Portrait.png" onerror="this.onerror=null; this.src='https://placehold.co/200x200/1F2937/7DD3FC?text=S';" alt="プロフィール画像" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-cyan-400 shadow-lg">
                     <div class="text-center md:text-left">
                         <h2 class="text-4xl font-bold text-white">散焦楼</h2>
                         <p class="mt-4 text-gray-300 leading-relaxed">
@@ -144,28 +148,28 @@
                 <div class="max-w-3xl mx-auto bg-gray-800/50 rounded-xl p-8">
                     <div class="space-y-6">
                         <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-4"><div class="w-12 h-12 rounded-lg bg-cyan-400/10 flex-shrink-0 flex items-center justify-center"><i class="fas fa-film text-cyan-400 fa-2x fa-fw"></i></div><h3 class="text-xl font-bold text-white">アニメ視聴</h3></div>
-                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition">詳しく見る →</a>
+                            <div class="flex items-center space-x-4"><div class="w-12 h-12 rounded-lg bg-cyan-400/10 flex-shrink-0 flex items-center justify-center"><i class="fas fa-film text-cyan-400 fa-2x fa-fw"></i></div><h3 class="text-xl font-bold text-white">アニメ</h3></div>
+                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4"><div class="w-12 h-12 rounded-lg bg-cyan-400/10 flex-shrink-0 flex items-center justify-center"><i class="fas fa-map-location-dot text-cyan-400 fa-2x fa-fw"></i></div><h3 class="text-xl font-bold text-white">旅行(聖地巡礼)</h3></div>
-                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition">詳しく見る →</a>
+                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4"><div class="w-12 h-12 rounded-lg bg-cyan-400/10 flex-shrink-0 flex items-center justify-center"><i class="fas fa-horse text-cyan-400 fa-2x fa-fw"></i></div><h3 class="text-xl font-bold text-white">競馬</h3></div>
-                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition">詳しく見る →</a>
+                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4"><div class="w-12 h-12 rounded-lg bg-cyan-400/10 flex-shrink-0 flex items-center justify-center"><i class="fas fa-comments text-cyan-400 fa-2x fa-fw"></i></div><h3 class="text-xl font-bold text-white">LLM対話</h3></div>
-                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition">詳しく見る →</a>
+                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4"><div class="w-12 h-12 rounded-lg bg-cyan-400/10 flex-shrink-0 flex items-center justify-center"><i class="fas fa-book-open text-cyan-400 fa-2x fa-fw"></i></div><h3 class="text-xl font-bold text-white"><s>読書</s></h3></div>
-                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition">詳しく見る →</a>
+                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4"><div class="w-12 h-12 rounded-lg bg-cyan-400/10 flex-shrink-0 flex items-center justify-center"><i class="fas fa-utensils text-cyan-400 fa-2x fa-fw"></i></div><h3 class="text-xl font-bold text-white"><s>料理(最近)</s></h3></div>
-                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition">詳しく見る →</a>
+                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
                     </div>
                 </div>
@@ -195,6 +199,7 @@
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const loadingScreen = document.getElementById('loading-screen');
 
+            // ローディング画面
             setTimeout(() => {
                 if(loadingScreen) {
                     loadingScreen.style.opacity = '0';
@@ -204,10 +209,12 @@
                 }
             }, 1500);
 
+            // モバイルメニューのトグル
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
 
+            // スクロールでセクションをフェードインさせる
             const sections = document.querySelectorAll('section');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
