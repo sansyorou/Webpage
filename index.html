@@ -1,206 +1,272 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>散焦楼のホームページ</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>散焦楼のホームページ</title>
+    <link rel="icon" href="self-portrait.png" type="image/png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+        .dotted-background {
+            background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 1rem 1rem;
+        }
 
-<style>
-body {
-    font-family: 'Inter', 'Noto Sans JP', sans-serif;
-    background:#0f172a;
-}
-.dotted-background {
-    background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
-    background-size: 1rem 1rem;
-}
-.card {
-    background: rgba(31,41,55,0.5);
-    border:1px solid rgba(75,85,99,0.4);
-    backdrop-filter: blur(10px);
-    border-radius: 1rem;
-    transition:0.3s;
-}
-.card:hover {
-    transform: translateY(-4px) scale(1.01);
-}
-.timeline-dot {
-    box-shadow:0 0 10px #22d3ee;
-}
-</style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in-section {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .navbar-blur {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
 </head>
+<body class="bg-gray-900 text-gray-200 dotted-background">
 
-<body class="text-gray-200 dotted-background">
+    <div id="loading-screen" class="fixed inset-0 bg-gray-900 z-50 flex justify-center items-center transition-opacity duration-500">
+        <div class="text-white text-2xl font-bold animate-pulse">Now Loading...</div>
+    </div>
 
-<!-- NAV -->
-<nav class="sticky top-0 z-40 bg-gray-900/70 backdrop-blur">
-<div class="container mx-auto px-6 py-3 flex justify-between items-center">
+    <nav id="navbar" class="navbar-blur bg-gray-900/70 sticky top-0 z-40 transition-all duration-300">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">散焦楼HP</a>
+            <div id="desktop-nav" class="hidden md:flex space-x-6 items-center">
+                <a href="#about" class="nav-link text-gray-300 hover:text-cyan-400 transition">自己紹介</a>
+                <a href="#career" class="nav-link text-gray-300 hover:text-cyan-400 transition">認識経歴</a>
+                <a href="#shikaku" class="nav-link text-gray-300 hover:text-cyan-400 transition">取得資格</a>
+                <a href="#hobby" class="nav-link text-gray-300 hover:text-cyan-400 transition">趣味</a>
+                <a href="#achievements" class="nav-link text-gray-300 hover:text-cyan-400 transition">主観実績</a>
+                <a href="#links" class="nav-link text-gray-300 hover:text-cyan-400 transition">リンク</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+             <a href="#about" class="nav-link block py-2 text-gray-300 hover:text-cyan-400 transition">自己紹介</a>
+             <a href="#career" class="nav-link block py-2 text-gray-300 hover:text-cyan-400 transition">認識経歴</a>
+             <a href="#shikaku" class="nav-link block py-2 text-gray-300 hover:text-cyan-400 transition">取得資格</a>
+             <a href="#hobby" class="nav-link block py-2 text-gray-300 hover:text-cyan-400 transition">趣味</a>
+             <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-400 transition">└ アニメ</a>
+             <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-400 transition">└ 旅行(聖地巡礼)</a>
+             <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-400 transition">└ 競馬</a>
+             <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-400 transition">└ LLM対話</a>
+             <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-400 transition">└ 読書</a>
+             <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-400 transition">└ 料理(最近)</a>
+             <a href="#achievements" class="nav-link block py-2 text-gray-300 hover:text-cyan-400 transition">主観実績</a>
+             <a href="#links" class="nav-link block py-2 text-gray-300 hover:text-cyan-400 transition">リンク</a>
+        </div>
+    </nav>
 
-<a href="#" class="text-xl font-bold text-white">散焦楼HP</a>
+    <main class="container mx-auto px-6">
+        
+        <div id="main-content">
+            <section class="py-16 fade-in-section">
+                <div class="relative bg-gray-800/50 rounded-2xl text-center min-h-[70vh] flex flex-col justify-center items-center p-8">
+                    <h1 class="text-4xl md:text-6xl font-black text-white leading-tight">
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+                            散焦楼の<br class="md:hidden"><span class="whitespace-nowrap">ホームページ</span>
+                        </span>
+                    </h1>
+                    <p class="mt-6 text-lg text-gray-400">Welcome to Sansyorou's website.</p>
+                </div>
+            </section>
 
-<div class="hidden md:flex space-x-6">
-<a href="#about">自己紹介</a>
-<a href="#career">認識経歴</a>
-<a href="#shikaku">取得資格</a>
-<a href="#hobby">趣味</a>
-<a href="#achievements">主観実績</a>
-<a href="#links">リンク</a>
-</div>
+            <section id="about" class="py-16 scroll-mt-20 fade-in-section">
+                <div class="bg-gray-800/50 rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                    <img src="self-portrait.png" onerror="this.onerror=null; this.src='https://placehold.co/200x200/1F2937/7DD3FC?text=S';" alt="プロフィール画像" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-cyan-400 shadow-lg">
+                    <div class="text-center md:text-left">
+                        <h2 class="text-4xl font-bold text-white">散焦楼</h2>
+                        <p class="mt-4 text-gray-300 leading-relaxed">
+                            千葉にいる月守理工大院生、電気屋でITの仕事する予定です。<br>言いたい事を正直に呟きます。呟くことは全て個人的見解です。
+                        </p>
+                    </div>
+                </div>
+            </section>
 
-<button id="menu-btn" class="md:hidden text-white text-2xl">☰</button>
-</div>
+            <section id="career" class="py-16 scroll-mt-20 fade-in-section">
+                <h2 class="text-4xl font-bold text-center text-white mb-12"><span class="text-cyan-400">#</span> 認識経歴</h2>
+                <div class="max-w-3xl mx-auto bg-gray-800/50 rounded-xl p-8 md:p-12">
+                    <div class="relative border-l-2 border-cyan-500/30 ml-6">
+                        <div class="mb-12 ml-12">
+                            <div class="absolute -left-[13px] mt-2 w-6 h-6 bg-gray-900 border-2 border-cyan-400 rounded-full"></div>
+                            <p class="text-sm text-cyan-400">2026年4月 - 現在</p>
+                            <h3 class="text-xl font-bold text-white mt-1">双守電気通信工業会社</h3>
+                        </div>
+                        <div class="mb-12 ml-12">
+                            <div class="absolute -left-[13px] mt-2 w-6 h-6 bg-gray-900 border-2 border-cyan-400 rounded-full"></div>
+                            <p class="text-sm text-cyan-400">2024年4月 - 2026年3月</p>
+                            <h3 class="text-xl font-bold text-white mt-1">月守理工科大学大学院　電脳工学研究科</h3>
+                            <p class="text-gray-400">
+                                システム知性哲学専攻<br>
+                                <span class="whitespace-nowrap">Cybersecurity Program Completed</span><br>
+                                専攻賞受賞
+                            </p>
+                        </div>
+                        <div class="mb-12 ml-12">
+                            <div class="absolute -left-[13px] mt-2 w-6 h-6 bg-gray-900 border-2 border-cyan-400 rounded-full"></div>
+                            <p class="text-sm text-cyan-400">2020年4月 - 2024年3月</p>
+                            <h3 class="text-xl font-bold text-white mt-1">月守理工科大学　電脳工学部</h3>
+                            <p class="text-gray-400">システム知性哲学科</p>
+                        </div>
+                        <div class="ml-12">
+                            <div class="absolute -left-[13px] mt-2 w-6 h-6 bg-gray-900 border-2 border-cyan-400 rounded-full"></div>
+                            <p class="text-sm text-cyan-400">2017年4月 - 2020年3月</p>
+                            <h3 class="text-xl font-bold text-white mt-1">晴守南高等学校　普通科</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-<div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-<a href="#about" class="block py-2">自己紹介</a>
-<a href="#career" class="block py-2">認識経歴</a>
-<a href="#shikaku" class="block py-2">取得資格</a>
-<a href="#hobby" class="block py-2">趣味</a>
-<a href="#achievements" class="block py-2">主観実績</a>
-<a href="#links" class="block py-2">リンク</a>
-</div>
-</nav>
+            <section id="shikaku" class="py-16 scroll-mt-20 fade-in-section">
+                <h2 class="text-4xl font-bold text-center text-white mb-12"><span class="text-cyan-400">#</span> 取得資格</h2>
+                <div class="max-w-3xl mx-auto bg-gray-800/50 rounded-xl p-8">
+                    <ul class="space-y-4 text-gray-300">
+                        <li class="p-3 bg-gray-900/50 rounded-lg">2019年5月　弓道初段　取得</li>
+                        <li class="p-3 bg-gray-900/50 rounded-lg">2021年11月 基本情報技術者試験　合格</li>
+                        <li class="p-3 bg-gray-900/50 rounded-lg">2022年2月　第一級陸上特殊無線技士　取得</li>
+                        <li class="p-3 bg-gray-900/50 rounded-lg">2022年3月　普通自動車第一種運転免許(AT限定)　取得</li>
+                        <li class="p-3 bg-gray-900/50 rounded-lg">2022年6月　応用情報技術者試験　合格</li>
+                        <li class="p-3 bg-gray-900/50 rounded-lg">2024年3月　高等学校教諭一種免許状(数学)　取得</li>
+                        <li class="p-3 bg-gray-900/50 rounded-lg">2024年3月　高等学校教諭一種免許状(工業)　取得</li>
+                        <li class="p-3 bg-gray-900/50 rounded-lg">2024年3月　高等学校教諭一種免許状(情報)　取得</li>
+                        <li class="p-3 bg-gray-900/50 rounded-lg">2025年7月　3級ファイナンシャル・プランニング技能士</li>
+                        <li class="p-3 bg-gray-900/50 rounded-lg">2026年3月　高等学校教諭専修免許状(情報)　取得</li>
+                    </ul>
+                </div>
+            </section>
 
-<main class="container mx-auto px-6">
+            <section id="hobby" class="py-16 scroll-mt-20 fade-in-section">
+                <h2 class="text-4xl font-bold text-center text-white mb-12"><span class="text-cyan-400">#</span> 趣味</h2>
+                <div class="max-w-3xl mx-auto bg-gray-800/50 rounded-xl p-8">
+                    <div class="space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4"><div class="w-12 h-12 rounded-lg bg-cyan-400/10 flex-shrink-0 flex items-center justify-center"><i class="fas fa-film text-cyan-400 fa-2x fa-fw"></i></div><h3 class="text-xl font-bold text-white">アニメ</h3></div>
+                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4"><div class="w-12 h-12 rounded-lg bg-cyan-400/10 flex-shrink-0 flex items-center justify-center"><i class="fas fa-map-location-dot text-cyan-400 fa-2x fa-fw"></i></div>
+                                <h3 class="text-xl font-bold text-white">
+                                    <span class="hidden md:inline">旅行(聖地巡礼)</span>
+                                    <span class="md:hidden">旅行<br>(聖地巡礼)</span>
+                                </h3>
+                            </div>
+                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4"><div class="w-12 h-12 rounded-lg bg-cyan-400/10 flex-shrink-0 flex items-center justify-center"><i class="fas fa-horse text-cyan-400 fa-2x fa-fw"></i></div><h3 class="text-xl font-bold text-white">競馬</h3></div>
+                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4"><div class="w-12 h-12 rounded-lg bg-cyan-400/10 flex-shrink-0 flex items-center justify-center"><i class="fas fa-comments text-cyan-400 fa-2x fa-fw"></i></div><h3 class="text-xl font-bold text-white">LLM対話</h3></div>
+                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4"><div class="w-12 h-12 rounded-lg bg-cyan-400/10 flex-shrink-0 flex items-center justify-center"><i class="fas fa-book-open text-cyan-400 fa-2x fa-fw"></i></div><h3 class="text-xl font-bold text-white"><s>読書</s></h3></div>
+                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4"><div class="w-12 h-12 rounded-lg bg-cyan-400/10 flex-shrink-0 flex items-center justify-center"><i class="fas fa-utensils text-cyan-400 fa-2x fa-fw"></i></div>
+                                <h3 class="text-xl font-bold text-white">
+                                    <s>
+                                        <span class="hidden md:inline">料理(最近)</span>
+                                        <span class="md:hidden">料理<br>(最近)</span>
+                                    </s>
+                                </h3>
+                            </div>
+                            <a href="#hobby" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-<!-- HERO -->
-<section class="py-24 text-center">
-<h1 class="text-4xl md:text-6xl font-black text-white leading-tight">
-<span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
-散焦楼の<br>ホームページ
-</span>
-</h1>
-<p class="mt-6 text-gray-400">Welcome to Sansyorou's website.</p>
-</section>
+            <section id="achievements" class="py-16 scroll-mt-20 fade-in-section">
+                <h2 class="text-4xl font-bold text-center text-white mb-12"><span class="text-cyan-400">#</span> 主観実績</h2>
+                <div class="max-w-3xl mx-auto bg-gray-800/50 rounded-xl p-8"><ul class="space-y-4">
+                    <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>自転車で千葉県縦断達成</li>
+                    <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>香川県で3食うどん達成</li>
+                    <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>山手線沿い1周ラン達成</li>
+                    <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>佐賀県内深夜雨中30km踏破</li>
+                    <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>ハーフマラソン大会初回2時間以内でゴール</li>
+                    <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>6大学の講義を受講して学生証6枚取得</li>
+                    <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>本州最端東西南北達成</li>
+                    <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>学会で学生賞受賞</li>
+                </ul></div>
+            </section>
 
-<!-- ABOUT -->
-<section id="about" class="py-24">
-<div class="card p-10 md:p-14 flex flex-col md:flex-row items-center gap-10">
-<img src="self-portrait.png" class="w-40 h-40 rounded-full border-4 border-cyan-400">
-<div>
-<h2 class="text-4xl font-bold">散焦楼</h2>
-<p class="mt-4 text-gray-300">
-千葉にいる月守理工大院生、電気屋でITの仕事する予定です。<br>
-言いたい事を正直に呟きます。呟くことは全て個人的見解です。
-</p>
-</div>
-</div>
-</section>
+            <section id="links" class="py-16 scroll-mt-20 fade-in-section">
+                <h2 class="text-4xl font-bold text-center text-white mb-12"><span class="text-cyan-400">#</span> Find Me Online</h2>
+                <div class="flex justify-center items-center space-x-6"><a href="https://x.com/sansyorou" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors duration-300"><svg class="w-10 h-10" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><title>X</title><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.931ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a></div>
+            </section>
+        </div>
+    </main>
 
-<!-- CAREER -->
-<section id="career" class="py-24">
-<h2 class="text-4xl text-center font-bold mb-16"><span class="text-cyan-400">//</span> 認識経歴</h2>
+    <footer class="bg-gray-900/50 border-t border-gray-800 mt-16">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2025 sansyorouHP</p>
+        </div>
+    </footer>
 
-<div class="card p-10 md:p-14 max-w-3xl mx-auto">
-<div class="relative border-l border-cyan-500/30 ml-6">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const loadingScreen = document.getElementById('loading-screen');
 
-<div class="mb-12 ml-10">
-<div class="absolute -left-3 w-6 h-6 bg-cyan-400 rounded-full timeline-dot"></div>
-<p class="text-cyan-400 text-sm">2026年4月 - 現在</p>
-<h3 class="text-xl font-bold">双守電気通信工業会社</h3>
-</div>
+            setTimeout(() => {
+                if(loadingScreen) {
+                    loadingScreen.style.opacity = '0';
+                    setTimeout(() => {
+                        loadingScreen.style.display = 'none';
+                    }, 500);
+                }
+            }, 1500);
 
-<div class="mb-12 ml-10">
-<div class="absolute -left-3 w-6 h-6 bg-cyan-400 rounded-full timeline-dot"></div>
-<p class="text-cyan-400 text-sm">2024年4月 - 2026年3月</p>
-<h3 class="text-xl font-bold">月守理工科大学大学院　電脳工学研究科</h3>
-<p class="text-gray-400">
-システム知性哲学専攻<br>
-Cybersecurity Program Completed<br>
-・専攻賞受賞
-</p>
-</div>
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
 
-<div class="mb-12 ml-10">
-<div class="absolute -left-3 w-6 h-6 bg-cyan-400 rounded-full timeline-dot"></div>
-<p class="text-cyan-400 text-sm">2020年4月 - 2024年3月</p>
-<h3 class="text-xl font-bold">月守理工科大学　電脳工学部</h3>
-<p class="text-gray-400">システム知性哲学科</p>
-</div>
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-section');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
 
-<div class="ml-10">
-<div class="absolute -left-3 w-6 h-6 bg-cyan-400 rounded-full timeline-dot"></div>
-<p class="text-cyan-400 text-sm">2017年4月 - 2020年3月</p>
-<h3 class="text-xl font-bold">晴守南高等学校　普通科</h3>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- QUALIFICATIONS -->
-<section id="shikaku" class="py-24">
-<h2 class="text-4xl text-center font-bold mb-16"><span class="text-cyan-400">//</span> 取得資格</h2>
-
-<div class="card p-10 max-w-3xl mx-auto">
-<ul class="space-y-4 text-gray-300">
-<li class="p-3 bg-gray-900/50 rounded-lg">2019年5月　弓道初段　取得</li>
-<li class="p-3 bg-gray-900/50 rounded-lg">2021年11月 基本情報技術者試験　合格</li>
-<li class="p-3 bg-gray-900/50 rounded-lg">2022年2月　第一級陸上特殊無線技士　取得</li>
-<li class="p-3 bg-gray-900/50 rounded-lg">2022年3月　普通自動車第一種運転免許(AT限定)　取得</li>
-<li class="p-3 bg-gray-900/50 rounded-lg">2022年6月　応用情報技術者試験　合格</li>
-<li class="p-3 bg-gray-900/50 rounded-lg">2024年3月　高等学校教諭一種免許状(数学)　取得</li>
-<li class="p-3 bg-gray-900/50 rounded-lg">2024年3月　高等学校教諭一種免許状(工業)　取得</li>
-<li class="p-3 bg-gray-900/50 rounded-lg">2024年3月　高等学校教諭一種免許状(情報)　取得</li>
-<li class="p-3 bg-gray-900/50 rounded-lg">2025年7月　3級ファイナンシャル・プランニング技能士</li>
-<li class="p-3 bg-gray-900/50 rounded-lg">2026年3月　高等学校教諭専修免許状(情報)　取得</li>
-</ul>
-</div>
-</section>
-
-<!-- HOBBY -->
-<section id="hobby" class="py-24">
-<h2 class="text-4xl text-center font-bold mb-16"><span class="text-cyan-400">//</span> 趣味</h2>
-
-<div class="card p-10 max-w-3xl mx-auto space-y-4">
-<div>アニメ</div>
-<div>旅行(聖地巡礼)</div>
-<div>競馬</div>
-<div>LLM対話</div>
-<div><s>読書</s></div>
-<div><s>料理(最近)</s></div>
-</div>
-</section>
-
-<!-- ACHIEVEMENTS -->
-<section id="achievements" class="py-24">
-<h2 class="text-4xl text-center font-bold mb-16"><span class="text-cyan-400">//</span> 主観実績</h2>
-
-<div class="card p-10 max-w-3xl mx-auto">
-<ul class="space-y-4">
-<li>✓ 自転車で千葉県縦断達成</li>
-<li>✓ 香川県で3食うどん達成</li>
-<li>✓ 山手線沿い1周ラン達成</li>
-<li>✓ 佐賀県内深夜雨中30km踏破</li>
-<li>✓ ハーフマラソン大会初回2時間以内でゴール</li>
-<li>✓ 6大学の講義を受講して学生証6枚取得</li>
-<li>✓ 本州最端東西南北達成</li>
-<li>✓ 学会で学生賞受賞</li>
-</ul>
-</div>
-</section>
-
-<!-- LINKS -->
-<section id="links" class="py-24 text-center">
-<h2 class="text-4xl font-bold mb-10"><span class="text-cyan-400">//</span> Find Me Online</h2>
-
-<a href="https://x.com/sansyorou" target="_blank" class="text-gray-400 hover:text-white">
-<svg class="w-10 h-10 mx-auto" viewBox="0 0 24 24" fill="currentColor">
-<path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.931Z"/>
-</svg>
-</a>
-</section>
-
-</main>
-
-<script>
-document.getElementById("menu-btn").onclick = () => {
-document.getElementById("mobile-menu").classList.toggle("hidden");
-};
-</script>
-
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>
