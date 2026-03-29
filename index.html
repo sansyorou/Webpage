@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>散焦楼のホームページ</title>
     <link rel="icon" href="self-portrait.png" type="image/png">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         :root {
-            --bg-main: #0b1120;
-            --bg-sub: #111827;
-            --card-bg: rgba(17, 24, 39, 0.62);
-            --card-border: rgba(255, 255, 255, 0.08);
-            --text-main: #e5e7eb;
-            --text-sub: #9ca3af;
+            --bg: #0f172a;
+            --bg-soft: #111827;
+            --panel: rgba(17, 24, 39, 0.92);
+            --panel-2: rgba(30, 41, 59, 0.92);
+            --border: rgba(148, 163, 184, 0.18);
+            --text: #f8fafc;
+            --muted: #cbd5e1;
+            --subtle: #94a3b8;
             --accent: #22d3ee;
-            --accent-2: #60a5fa;
-            --accent-3: #a78bfa;
+            --accent-strong: #06b6d4;
         }
 
         html {
@@ -36,80 +37,57 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             background:
-                radial-gradient(circle at top, rgba(34, 211, 238, 0.10), transparent 26%),
-                radial-gradient(circle at 80% 20%, rgba(96, 165, 250, 0.08), transparent 22%),
-                linear-gradient(180deg, #0b1120 0%, #0f172a 40%, #111827 100%);
+                radial-gradient(circle at top, rgba(34, 211, 238, 0.05), transparent 24%),
+                linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
+            color: var(--text);
         }
 
         .dotted-background {
-            background-image: radial-gradient(circle, rgba(255,255,255,0.035) 1px, transparent 1px);
+            background-image: radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px);
             background-size: 1rem 1rem;
         }
 
-        .glass-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            box-shadow:
-                0 10px 30px rgba(0,0,0,0.28),
-                inset 0 1px 0 rgba(255,255,255,0.04);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+        .navbar-blur {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.84);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.10);
+        }
+
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
         }
 
         .hero-panel {
             position: relative;
             overflow: hidden;
             background:
-                linear-gradient(135deg, rgba(34,211,238,0.10), rgba(96,165,250,0.08) 45%, rgba(167,139,250,0.08)),
-                rgba(17,24,39,0.55);
-            border: 1px solid rgba(255,255,255,0.08);
-            box-shadow:
-                0 20px 50px rgba(0,0,0,0.35),
-                inset 0 1px 0 rgba(255,255,255,0.04);
-        }
-
-        .hero-panel::before {
-            content: "";
-            position: absolute;
-            inset: auto -10% -35% auto;
-            width: 18rem;
-            height: 18rem;
-            background: radial-gradient(circle, rgba(34,211,238,0.18), transparent 65%);
-            pointer-events: none;
-            filter: blur(10px);
+                linear-gradient(180deg, rgba(30, 41, 59, 0.96), rgba(15, 23, 42, 0.96));
+            border: 1px solid var(--border);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
         }
 
         .hero-panel::after {
             content: "";
             position: absolute;
-            inset: -20% auto auto -10%;
+            inset: auto -6rem -6rem auto;
             width: 16rem;
             height: 16rem;
-            background: radial-gradient(circle, rgba(96,165,250,0.14), transparent 70%);
+            background: radial-gradient(circle, rgba(34,211,238,0.08), transparent 68%);
             pointer-events: none;
-            filter: blur(14px);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(24px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .section-card {
+            border-radius: 1.25rem;
+            transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
         }
 
-        .fade-in-section {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .navbar-blur {
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            background: rgba(8, 15, 32, 0.66);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+        .section-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(34, 211, 238, 0.22);
+            box-shadow: 0 16px 34px rgba(0, 0, 0, 0.30);
         }
 
         .nav-link {
@@ -123,8 +101,8 @@
             bottom: -0.35rem;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-2));
-            transition: width 0.25s ease;
+            background: var(--accent);
+            transition: width 0.2s ease;
         }
 
         .nav-link:hover::after {
@@ -134,7 +112,7 @@
         .section-title {
             position: relative;
             display: inline-block;
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.7rem;
         }
 
         .section-title::after {
@@ -143,140 +121,145 @@
             left: 50%;
             transform: translateX(-50%);
             bottom: 0;
-            width: 4.5rem;
+            width: 3.75rem;
             height: 3px;
             border-radius: 9999px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
-            opacity: 0.9;
+            background: var(--accent);
         }
 
-        .timeline-line {
+        .timeline-wrap {
             position: relative;
         }
 
-        .timeline-line::before {
+        .timeline-wrap::before {
             content: "";
             position: absolute;
-            left: -2px;
-            top: 0;
-            bottom: 0;
+            left: 0;
+            top: 0.3rem;
+            bottom: 0.3rem;
             width: 2px;
-            background: linear-gradient(180deg, rgba(34,211,238,0.45), rgba(96,165,250,0.22));
+            background: linear-gradient(180deg, rgba(34,211,238,0.45), rgba(34,211,238,0.10));
+        }
+
+        .timeline-item {
+            position: relative;
         }
 
         .timeline-dot {
-            box-shadow:
-                0 0 0 4px rgba(34,211,238,0.08),
-                0 0 18px rgba(34,211,238,0.42);
+            box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.08);
         }
 
-        .lift-hover {
-            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background-color 0.28s ease;
+        .list-chip {
+            background: rgba(15, 23, 42, 0.78);
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            color: var(--muted);
+            border-radius: 0.85rem;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
         }
 
-        .lift-hover:hover {
-            transform: translateY(-3px);
-            border-color: rgba(34,211,238,0.22);
-            box-shadow:
-                0 18px 40px rgba(0,0,0,0.34),
-                0 0 0 1px rgba(34,211,238,0.05) inset;
-        }
-
-        .chip-panel {
-            background: rgba(3, 7, 18, 0.38);
-            border: 1px solid rgba(255,255,255,0.06);
+        .list-chip:hover {
+            background: rgba(15, 23, 42, 0.96);
+            border-color: rgba(34, 211, 238, 0.20);
         }
 
         .soft-button {
-            background: linear-gradient(180deg, rgba(55,65,81,0.9), rgba(31,41,55,0.95));
-            border: 1px solid rgba(255,255,255,0.06);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.20);
-            transition: all 0.25s ease;
+            background: #1f2937;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            color: #f8fafc;
+            transition: all 0.2s ease;
         }
 
         .soft-button:hover {
-            transform: translateY(-1px);
-            background: linear-gradient(180deg, rgba(75,85,99,0.95), rgba(55,65,81,0.98));
-            box-shadow: 0 10px 24px rgba(0,0,0,0.28);
+            background: #273449;
+            border-color: rgba(34, 211, 238, 0.24);
         }
 
-        .x-link {
-            transition: transform 0.25s ease, color 0.25s ease, filter 0.25s ease;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .x-link:hover {
-            transform: translateY(-2px) scale(1.05);
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.12));
+        .fade-in-section {
+            animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        .subtle {
+            color: var(--subtle);
         }
     </style>
 </head>
-<body class="text-gray-200 dotted-background">
+<body class="bg-gray-900 text-gray-100 dotted-background">
 
-    <div id="loading-screen" class="fixed inset-0 bg-gray-950 z-50 flex justify-center items-center transition-opacity duration-500">
-        <div class="flex flex-col items-center gap-4">
-            <div class="h-10 w-10 rounded-full border-2 border-cyan-400/30 border-t-cyan-400 animate-spin"></div>
-            <div class="text-white text-xl font-bold tracking-wide">Now Loading...</div>
-        </div>
+    <div id="loading-screen" class="fixed inset-0 bg-slate-950 z-50 flex justify-center items-center transition-opacity duration-500">
+        <div class="text-white text-2xl font-bold animate-pulse">Now Loading...</div>
     </div>
 
     <nav id="navbar" class="navbar-blur sticky top-0 z-40 transition-all duration-300">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl font-black tracking-wide text-white">散焦楼HP</a>
+            <a href="#" class="text-2xl font-black text-white tracking-wide">散焦楼HP</a>
             <div id="desktop-nav" class="hidden md:flex space-x-6 items-center">
-                <a href="#about" class="nav-link text-gray-300 hover:text-cyan-300 transition">自己紹介</a>
-                <a href="#career" class="nav-link text-gray-300 hover:text-cyan-300 transition">認識経歴</a>
-                <a href="#shikaku" class="nav-link text-gray-300 hover:text-cyan-300 transition">取得資格</a>
-                <a href="#hobby" class="nav-link text-gray-300 hover:text-cyan-300 transition">趣味</a>
-                <a href="#achievements" class="nav-link text-gray-300 hover:text-cyan-300 transition">主観実績</a>
-                <a href="#links" class="nav-link text-gray-300 hover:text-cyan-300 transition">リンク</a>
+                <a href="#about" class="nav-link text-slate-200 hover:text-cyan-300 transition">自己紹介</a>
+                <a href="#career" class="nav-link text-slate-200 hover:text-cyan-300 transition">認識経歴</a>
+                <a href="#shikaku" class="nav-link text-slate-200 hover:text-cyan-300 transition">取得資格</a>
+                <a href="#hobby" class="nav-link text-slate-200 hover:text-cyan-300 transition">趣味</a>
+                <a href="#achievements" class="nav-link text-slate-200 hover:text-cyan-300 transition">主観実績</a>
+                <a href="#links" class="nav-link text-slate-200 hover:text-cyan-300 transition">リンク</a>
             </div>
             <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-white focus:outline-none transition hover:text-cyan-300">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                     </svg>
                 </button>
             </div>
         </div>
+
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-             <a href="#about" class="nav-link block py-2 text-gray-300 hover:text-cyan-300 transition">自己紹介</a>
-             <a href="#career" class="nav-link block py-2 text-gray-300 hover:text-cyan-300 transition">認識経歴</a>
-             <a href="#shikaku" class="nav-link block py-2 text-gray-300 hover:text-cyan-300 transition">取得資格</a>
-             <a href="#hobby" class="nav-link block py-2 text-gray-300 hover:text-cyan-300 transition">趣味</a>
-             <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-300 transition">└ アニメ</a>
-             <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-300 transition">└ 旅行(聖地巡礼)</a>
-             <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-300 transition">└ 競馬</a>
-             <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-300 transition">└ LLM対話</a>
-             <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-300 transition">└ 読書</a>
-             <a href="#hobby" class="nav-link block py-2 pl-6 text-gray-400 hover:text-cyan-300 transition">└ 料理(最近)</a>
-             <a href="#achievements" class="nav-link block py-2 text-gray-300 hover:text-cyan-300 transition">主観実績</a>
-             <a href="#links" class="nav-link block py-2 text-gray-300 hover:text-cyan-300 transition">リンク</a>
+             <a href="#about" class="nav-link block py-2 text-slate-200 hover:text-cyan-300 transition">自己紹介</a>
+             <a href="#career" class="nav-link block py-2 text-slate-200 hover:text-cyan-300 transition">認識経歴</a>
+             <a href="#shikaku" class="nav-link block py-2 text-slate-200 hover:text-cyan-300 transition">取得資格</a>
+             <a href="#hobby" class="nav-link block py-2 text-slate-200 hover:text-cyan-300 transition">趣味</a>
+             <a href="#hobby" class="nav-link block py-2 pl-6 text-slate-400 hover:text-cyan-300 transition">└ アニメ</a>
+             <a href="#hobby" class="nav-link block py-2 pl-6 text-slate-400 hover:text-cyan-300 transition">└ 旅行(聖地巡礼)</a>
+             <a href="#hobby" class="nav-link block py-2 pl-6 text-slate-400 hover:text-cyan-300 transition">└ 競馬</a>
+             <a href="#hobby" class="nav-link block py-2 pl-6 text-slate-400 hover:text-cyan-300 transition">└ LLM対話</a>
+             <a href="#hobby" class="nav-link block py-2 pl-6 text-slate-400 hover:text-cyan-300 transition">└ 読書</a>
+             <a href="#hobby" class="nav-link block py-2 pl-6 text-slate-400 hover:text-cyan-300 transition">└ 料理(最近)</a>
+             <a href="#achievements" class="nav-link block py-2 text-slate-200 hover:text-cyan-300 transition">主観実績</a>
+             <a href="#links" class="nav-link block py-2 text-slate-200 hover:text-cyan-300 transition">リンク</a>
         </div>
     </nav>
 
     <main class="container mx-auto px-6">
         <div id="main-content">
+
             <section class="py-16 fade-in-section">
-                <div class="hero-panel rounded-3xl text-center min-h-[70vh] flex flex-col justify-center items-center p-8 md:p-12">
-                    <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/15 bg-cyan-400/5 px-4 py-1.5 text-sm text-cyan-200">
-                        <span class="h-2 w-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                        Personal Website
-                    </div>
+                <div class="hero-panel rounded-3xl text-center min-h-[70vh] flex flex-col justify-center items-center p-8">
                     <h1 class="text-4xl md:text-6xl font-black text-white leading-tight">
-                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500">
-                            散焦楼の<br class="md:hidden">ホームページ
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-sky-400">
+                            散焦楼の<br>ホームページ
                         </span>
                     </h1>
-                    <p class="mt-6 text-lg text-gray-300">Welcome to Sansyorou's website.</p>
+                    <p class="mt-6 text-lg text-slate-300">Welcome to Sansyorou's website.</p>
                 </div>
             </section>
 
             <section id="about" class="py-16 scroll-mt-20 fade-in-section">
-                <div class="glass-card lift-hover rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
-                    <img src="self-portrait.png" onerror="this.onerror=null; this.src='https://placehold.co/200x200/1F2937/7DD3FC?text=S';" alt="プロフィール画像" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-cyan-400 shadow-[0_0_30px_rgba(34,211,238,0.15)]">
+                <div class="panel section-card p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                    <img src="self-portrait.png" onerror="this.onerror=null; this.src='https://placehold.co/200x200/1F2937/7DD3FC?text=S';" alt="プロフィール画像" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-cyan-400 shadow-lg">
                     <div class="text-center md:text-left">
                         <h2 class="text-4xl font-bold text-white">散焦楼</h2>
-                        <p class="mt-4 text-gray-300 leading-relaxed">
+                        <p class="mt-4 text-slate-300 leading-relaxed">
                             千葉にいる月守理工大院生、電気屋でITの仕事する予定です。<br>言いたい事を正直に呟きます。呟くことは全て個人的見解です。
                         </p>
                     </div>
@@ -285,31 +268,34 @@
 
             <section id="career" class="py-16 scroll-mt-20 fade-in-section">
                 <h2 class="section-title text-4xl font-bold text-center text-white mb-12"><span class="text-cyan-400">#</span> 認識経歴</h2>
-                <div class="max-w-3xl mx-auto glass-card lift-hover rounded-3xl p-8 md:p-12">
-                    <div class="timeline-line relative ml-6">
-                        <div class="mb-12 ml-12">
-                            <div class="timeline-dot absolute -left-[13px] mt-2 w-6 h-6 bg-gray-900 border-2 border-cyan-400 rounded-full"></div>
+                <div class="max-w-3xl mx-auto panel section-card rounded-2xl p-8 md:p-12">
+                    <div class="timeline-wrap ml-6">
+                        <div class="timeline-item mb-12 ml-12">
+                            <div class="timeline-dot absolute -left-[13px] mt-2 w-6 h-6 bg-slate-900 border-2 border-cyan-400 rounded-full"></div>
                             <p class="text-sm text-cyan-300 font-medium">2026年4月 - 現在</p>
                             <h3 class="text-xl font-bold text-white mt-1">双守電気通信工業会社</h3>
                         </div>
-                        <div class="mb-12 ml-12">
-                            <div class="timeline-dot absolute -left-[13px] mt-2 w-6 h-6 bg-gray-900 border-2 border-cyan-400 rounded-full"></div>
+
+                        <div class="timeline-item mb-12 ml-12">
+                            <div class="timeline-dot absolute -left-[13px] mt-2 w-6 h-6 bg-slate-900 border-2 border-cyan-400 rounded-full"></div>
                             <p class="text-sm text-cyan-300 font-medium">2024年4月 - 2026年3月</p>
                             <h3 class="text-xl font-bold text-white mt-1">月守理工科大学大学院　電脳工学研究科</h3>
-                            <p class="text-gray-400">
+                            <p class="text-slate-300 leading-relaxed">
                                 システム知性哲学専攻<br>
-                                <span class="whitespace-nowrap">Cybersecurity Program Completed</span><br>
+                                <span class="whitespace-nowrap text-slate-200 text-sm md:text-base">Completed Cybersecurity Program</span><br>
                                 専攻賞受賞
                             </p>
                         </div>
-                        <div class="mb-12 ml-12">
-                            <div class="timeline-dot absolute -left-[13px] mt-2 w-6 h-6 bg-gray-900 border-2 border-cyan-400 rounded-full"></div>
+
+                        <div class="timeline-item mb-12 ml-12">
+                            <div class="timeline-dot absolute -left-[13px] mt-2 w-6 h-6 bg-slate-900 border-2 border-cyan-400 rounded-full"></div>
                             <p class="text-sm text-cyan-300 font-medium">2020年4月 - 2024年3月</p>
                             <h3 class="text-xl font-bold text-white mt-1">月守理工科大学　電脳工学部</h3>
-                            <p class="text-gray-400">システム知性哲学科</p>
+                            <p class="text-slate-300">システム知性哲学科</p>
                         </div>
-                        <div class="ml-12">
-                            <div class="timeline-dot absolute -left-[13px] mt-2 w-6 h-6 bg-gray-900 border-2 border-cyan-400 rounded-full"></div>
+
+                        <div class="timeline-item ml-12">
+                            <div class="timeline-dot absolute -left-[13px] mt-2 w-6 h-6 bg-slate-900 border-2 border-cyan-400 rounded-full"></div>
                             <p class="text-sm text-cyan-300 font-medium">2017年4月 - 2020年3月</p>
                             <h3 class="text-xl font-bold text-white mt-1">晴守南高等学校　普通科</h3>
                         </div>
@@ -319,39 +305,39 @@
 
             <section id="shikaku" class="py-16 scroll-mt-20 fade-in-section">
                 <h2 class="section-title text-4xl font-bold text-center text-white mb-12"><span class="text-cyan-400">#</span> 取得資格</h2>
-                <div class="max-w-3xl mx-auto glass-card lift-hover rounded-3xl p-8">
-                    <ul class="space-y-4 text-gray-300">
-                        <li class="chip-panel p-3 rounded-xl transition hover:border-cyan-400/15 hover:bg-gray-900/60">2019年5月　弓道初段　取得</li>
-                        <li class="chip-panel p-3 rounded-xl transition hover:border-cyan-400/15 hover:bg-gray-900/60">2021年11月 基本情報技術者試験　合格</li>
-                        <li class="chip-panel p-3 rounded-xl transition hover:border-cyan-400/15 hover:bg-gray-900/60">2022年2月　第一級陸上特殊無線技士　取得</li>
-                        <li class="chip-panel p-3 rounded-xl transition hover:border-cyan-400/15 hover:bg-gray-900/60">2022年3月　普通自動車第一種運転免許(AT限定)　取得</li>
-                        <li class="chip-panel p-3 rounded-xl transition hover:border-cyan-400/15 hover:bg-gray-900/60">2022年6月　応用情報技術者試験　合格</li>
-                        <li class="chip-panel p-3 rounded-xl transition hover:border-cyan-400/15 hover:bg-gray-900/60">2024年3月　高等学校教諭一種免許状(数学)　取得</li>
-                        <li class="chip-panel p-3 rounded-xl transition hover:border-cyan-400/15 hover:bg-gray-900/60">2024年3月　高等学校教諭一種免許状(工業)　取得</li>
-                        <li class="chip-panel p-3 rounded-xl transition hover:border-cyan-400/15 hover:bg-gray-900/60">2024年3月　高等学校教諭一種免許状(情報)　取得</li>
-                        <li class="chip-panel p-3 rounded-xl transition hover:border-cyan-400/15 hover:bg-gray-900/60">2025年7月　3級ファイナンシャル・プランニング技能士</li>
-                        <li class="chip-panel p-3 rounded-xl transition hover:border-cyan-400/15 hover:bg-gray-900/60">2026年3月　高等学校教諭専修免許状(情報)　取得</li>
+                <div class="max-w-3xl mx-auto panel section-card rounded-2xl p-8">
+                    <ul class="space-y-4 text-slate-200">
+                        <li class="list-chip p-3">2019年5月　弓道初段　取得</li>
+                        <li class="list-chip p-3">2021年11月 基本情報技術者試験　合格</li>
+                        <li class="list-chip p-3">2022年2月　第一級陸上特殊無線技士　取得</li>
+                        <li class="list-chip p-3">2022年3月　普通自動車第一種運転免許(AT限定)　取得</li>
+                        <li class="list-chip p-3">2022年6月　応用情報技術者試験　合格</li>
+                        <li class="list-chip p-3">2024年3月　高等学校教諭一種免許状(数学)　取得</li>
+                        <li class="list-chip p-3">2024年3月　高等学校教諭一種免許状(工業)　取得</li>
+                        <li class="list-chip p-3">2024年3月　高等学校教諭一種免許状(情報)　取得</li>
+                        <li class="list-chip p-3">2025年7月　3級ファイナンシャル・プランニング技能士</li>
+                        <li class="list-chip p-3">2026年3月　高等学校教諭専修免許状(情報)　取得</li>
                     </ul>
                 </div>
             </section>
 
             <section id="hobby" class="py-16 scroll-mt-20 fade-in-section">
                 <h2 class="section-title text-4xl font-bold text-center text-white mb-12"><span class="text-cyan-400">#</span> 趣味</h2>
-                <div class="max-w-3xl mx-auto glass-card lift-hover rounded-3xl p-8">
+                <div class="max-w-3xl mx-auto panel section-card rounded-2xl p-8">
                     <div class="space-y-6">
-                        <div class="flex items-center justify-between gap-4">
+                        <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-xl bg-cyan-400/10 border border-cyan-400/10 flex-shrink-0 flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.08)]">
+                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center">
                                     <i class="fas fa-film text-cyan-400 fa-2x fa-fw"></i>
                                 </div>
                                 <h3 class="text-xl font-bold text-white">アニメ</h3>
                             </div>
-                            <a href="#hobby" class="soft-button text-white font-bold py-2 px-4 rounded-xl"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                            <a href="#hobby" class="soft-button font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
 
-                        <div class="flex items-center justify-between gap-4">
+                        <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-xl bg-cyan-400/10 border border-cyan-400/10 flex-shrink-0 flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.08)]">
+                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center">
                                     <i class="fas fa-map-location-dot text-cyan-400 fa-2x fa-fw"></i>
                                 </div>
                                 <h3 class="text-xl font-bold text-white">
@@ -359,42 +345,42 @@
                                     <span class="md:hidden">旅行<br>(聖地巡礼)</span>
                                 </h3>
                             </div>
-                            <a href="#hobby" class="soft-button text-white font-bold py-2 px-4 rounded-xl"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                            <a href="#hobby" class="soft-button font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
 
-                        <div class="flex items-center justify-between gap-4">
+                        <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-xl bg-cyan-400/10 border border-cyan-400/10 flex-shrink-0 flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.08)]">
+                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center">
                                     <i class="fas fa-horse text-cyan-400 fa-2x fa-fw"></i>
                                 </div>
                                 <h3 class="text-xl font-bold text-white">競馬</h3>
                             </div>
-                            <a href="#hobby" class="soft-button text-white font-bold py-2 px-4 rounded-xl"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                            <a href="#hobby" class="soft-button font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
 
-                        <div class="flex items-center justify-between gap-4">
+                        <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-xl bg-cyan-400/10 border border-cyan-400/10 flex-shrink-0 flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.08)]">
+                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center">
                                     <i class="fas fa-comments text-cyan-400 fa-2x fa-fw"></i>
                                 </div>
                                 <h3 class="text-xl font-bold text-white">LLM対話</h3>
                             </div>
-                            <a href="#hobby" class="soft-button text-white font-bold py-2 px-4 rounded-xl"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                            <a href="#hobby" class="soft-button font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
 
-                        <div class="flex items-center justify-between gap-4">
+                        <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-xl bg-cyan-400/10 border border-cyan-400/10 flex-shrink-0 flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.08)]">
+                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center">
                                     <i class="fas fa-book-open text-cyan-400 fa-2x fa-fw"></i>
                                 </div>
                                 <h3 class="text-xl font-bold text-white"><s>読書</s></h3>
                             </div>
-                            <a href="#hobby" class="soft-button text-white font-bold py-2 px-4 rounded-xl"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                            <a href="#hobby" class="soft-button font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
 
-                        <div class="flex items-center justify-between gap-4">
+                        <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-xl bg-cyan-400/10 border border-cyan-400/10 flex-shrink-0 flex items-center justify-center shadow-[0_0_20px_rgba(34,211,238,0.08)]">
+                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center">
                                     <i class="fas fa-utensils text-cyan-400 fa-2x fa-fw"></i>
                                 </div>
                                 <h3 class="text-xl font-bold text-white">
@@ -404,7 +390,7 @@
                                     </s>
                                 </h3>
                             </div>
-                            <a href="#hobby" class="soft-button text-white font-bold py-2 px-4 rounded-xl"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                            <a href="#hobby" class="soft-button font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
                     </div>
                 </div>
@@ -412,8 +398,8 @@
 
             <section id="achievements" class="py-16 scroll-mt-20 fade-in-section">
                 <h2 class="section-title text-4xl font-bold text-center text-white mb-12"><span class="text-cyan-400">#</span> 主観実績</h2>
-                <div class="max-w-3xl mx-auto glass-card lift-hover rounded-3xl p-8">
-                    <ul class="space-y-4">
+                <div class="max-w-3xl mx-auto panel section-card rounded-2xl p-8">
+                    <ul class="space-y-4 text-slate-200">
                         <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>自転車で千葉県縦断達成</li>
                         <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>香川県で3食うどん達成</li>
                         <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>山手線沿い1周ラン達成</li>
@@ -429,7 +415,7 @@
             <section id="links" class="py-16 scroll-mt-20 fade-in-section">
                 <h2 class="section-title text-4xl font-bold text-center text-white mb-12"><span class="text-cyan-400">#</span> Find Me Online</h2>
                 <div class="flex justify-center items-center space-x-6">
-                    <a href="https://x.com/sansyorou" target="_blank" rel="noopener noreferrer" class="x-link text-gray-400 hover:text-white transition-colors duration-300">
+                    <a href="https://x.com/sansyorou" target="_blank" rel="noopener noreferrer" class="text-slate-300 hover:text-white transition-colors duration-300">
                         <svg class="w-10 h-10" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                             <title>X</title>
                             <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.931ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
@@ -440,8 +426,8 @@
         </div>
     </main>
 
-    <footer class="bg-gray-950/30 border-t border-white/5 mt-16">
-        <div class="container mx-auto px-6 py-6 text-center text-gray-500">
+    <footer class="bg-slate-950/40 border-t border-slate-700/30 mt-16">
+        <div class="container mx-auto px-6 py-6 text-center text-slate-400">
             <p>&copy; 2025 sansyorouHP</p>
         </div>
     </footer>
@@ -473,7 +459,7 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.12 });
+            }, { threshold: 0.1 });
 
             sections.forEach(section => {
                 observer.observe(section);
