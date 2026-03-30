@@ -73,12 +73,6 @@
             box-shadow: 0 10px 40px rgba(2, 6, 23, 0.22);
         }
 
-        .brand-mark {
-            background: linear-gradient(135deg, rgba(103,232,249,0.20), rgba(56,189,248,0.10));
-            border: 1px solid rgba(103,232,249,0.24);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
-        }
-
         .nav-link {
             position: relative;
             color: #dbeafe;
@@ -175,6 +169,16 @@
             background: linear-gradient(180deg, rgba(10, 16, 29, 0.88), rgba(12, 20, 35, 0.82));
             border: 1px solid var(--line);
             box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-panel::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(255,255,255,0.04), transparent 20%);
         }
 
         .section-header {
@@ -237,12 +241,14 @@
 
         .timeline-rail {
             position: relative;
+            --timeline-line-x: 0.55rem;
+            --timeline-dot-size: 0.95rem;
         }
 
         .timeline-rail::before {
             content: "";
             position: absolute;
-            left: 0.55rem;
+            left: var(--timeline-line-x);
             top: 0.35rem;
             bottom: 0.35rem;
             width: 2px;
@@ -257,15 +263,22 @@
             background: linear-gradient(180deg, rgba(15,23,42,0.80), rgba(15,23,42,0.60));
             border: 1px solid rgba(148, 163, 184, 0.14);
             box-shadow: 0 14px 34px rgba(2, 8, 23, 0.18);
+            transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-2px);
+            border-color: rgba(103,232,249,0.24);
+            box-shadow: 0 18px 38px rgba(2, 8, 23, 0.22);
         }
 
         .timeline-item::before {
             content: "";
             position: absolute;
-            left: -2.02rem;
+            left: calc(var(--timeline-line-x) - 2.5rem - (var(--timeline-dot-size) / 2));
             top: 1.35rem;
-            width: 0.95rem;
-            height: 0.95rem;
+            width: var(--timeline-dot-size);
+            height: var(--timeline-dot-size);
             border-radius: 9999px;
             background: radial-gradient(circle at 30% 30%, #ecfeff, #67e8f9 50%, #0f172a 52%);
             box-shadow: 0 0 0 6px rgba(103,232,249,0.08), 0 0 20px rgba(103,232,249,0.18);
@@ -385,8 +398,8 @@
         }
 
         @media (max-width: 767px) {
-            .timeline-rail::before {
-                left: 0.42rem;
+            .timeline-rail {
+                --timeline-line-x: 0.42rem;
             }
 
             .timeline-item {
@@ -395,7 +408,7 @@
             }
 
             .timeline-item::before {
-                left: -1.68rem;
+                left: calc(var(--timeline-line-x) - 2rem - (var(--timeline-dot-size) / 2));
             }
 
             .hobby-row {
@@ -412,10 +425,7 @@
 
     <nav id="navbar" class="navbar-blur sticky top-0 z-40 transition-all duration-300">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center gap-4">
-            <a href="#" class="flex items-center gap-3 text-white">
-                <span class="brand-mark inline-flex items-center justify-center w-10 h-10 rounded-2xl text-cyan-200 text-sm font-black">散</span>
-                <span class="text-xl md:text-2xl font-extrabold tracking-wide">散焦楼HP</span>
-            </a>
+            <a href="#" class="text-white text-xl md:text-2xl font-extrabold tracking-wide">散焦楼HP</a>
             <div id="desktop-nav" class="hidden md:flex space-x-6 items-center text-sm font-medium">
                 <a href="#about" class="nav-link">自己紹介</a>
                 <a href="#career" class="nav-link">認識経歴</a>
@@ -463,7 +473,7 @@
             </section>
 
             <section id="about" class="py-12 md:py-16 scroll-mt-24 reveal">
-                <div class="section-panel rounded-[var(--radius-xl)] p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <div class="section-panel rounded-[var(--radius-xl)] p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12 ring-1 ring-white/5">
                     <div class="profile-ring shrink-0">
                         <img src="self-portrait.png" onerror="this.onerror=null; this.src='https://placehold.co/200x200/1F2937/7DD3FC?text=S';" alt="プロフィール画像" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover">
                     </div>
@@ -482,7 +492,7 @@
                     <h2 class="section-title text-4xl font-bold text-white"><span class="text-cyan-400">#</span> 認識経歴</h2>
                 </div>
 
-                <div class="max-w-4xl mx-auto section-panel rounded-[var(--radius-xl)] p-6 md:p-8 lg:p-10">
+                <div class="max-w-4xl mx-auto section-panel rounded-[var(--radius-xl)] p-6 md:p-8 lg:p-10 ring-1 ring-white/5">
                     <div class="timeline-rail space-y-5 md:space-y-6">
                         <div class="timeline-item">
                             <p class="timeline-date">2026年4月 - 現在</p>
@@ -516,7 +526,7 @@
                 <div class="section-header">
                     <h2 class="section-title text-4xl font-bold text-white"><span class="text-cyan-400">#</span> 取得資格</h2>
                 </div>
-                <div class="max-w-4xl mx-auto section-panel rounded-[var(--radius-xl)] p-6 md:p-8">
+                <div class="max-w-4xl mx-auto section-panel rounded-[var(--radius-xl)] p-6 md:p-8 ring-1 ring-white/5">
                     <ul class="grid gap-4 text-slate-200 md:grid-cols-2">
                         <li class="soft-card p-4 rounded-2xl">2019年5月　弓道初段　取得</li>
                         <li class="soft-card p-4 rounded-2xl">2021年11月 基本情報技術者試験　合格</li>
@@ -537,7 +547,7 @@
                 <div class="section-header">
                     <h2 class="section-title text-4xl font-bold text-white"><span class="text-cyan-400">#</span> 趣味</h2>
                 </div>
-                <div class="max-w-4xl mx-auto section-panel rounded-[var(--radius-xl)] p-6 md:p-8">
+                <div class="max-w-4xl mx-auto section-panel rounded-[var(--radius-xl)] p-6 md:p-8 ring-1 ring-white/5">
                     <div class="space-y-4">
                         <div class="hobby-row">
                             <div class="flex items-center space-x-4 min-w-0">
@@ -597,7 +607,7 @@
                 <div class="section-header">
                     <h2 class="section-title text-4xl font-bold text-white"><span class="text-cyan-400">#</span> 主観実績</h2>
                 </div>
-                <div class="max-w-4xl mx-auto section-panel rounded-[var(--radius-xl)] p-6 md:p-8">
+                <div class="max-w-4xl mx-auto section-panel rounded-[var(--radius-xl)] p-6 md:p-8 ring-1 ring-white/5">
                     <ul class="achievement-list grid gap-4 md:grid-cols-2">
                         <li class="flex items-start gap-3 text-slate-200"><span class="check-pill">✓</span><span>自転車で千葉県縦断達成</span></li>
                         <li class="flex items-start gap-3 text-slate-200"><span class="check-pill">✓</span><span>香川県で3食うどん達成</span></li>
@@ -607,8 +617,8 @@
                         <li class="flex items-start gap-3 text-slate-200"><span class="check-pill">✓</span><span>6大学の講義を受講して学生証6枚取得</span></li>
                         <li class="flex items-start gap-3 text-slate-200"><span class="check-pill">✓</span><span>本州最端東西南北達成</span></li>
                         <li class="flex items-start gap-3 text-slate-200"><span class="check-pill">✓</span><span>学会で学生賞受賞</span></li>
-                        <li class="flex items-start gap-3 text-slate-200"><span class="check-pill">✓</span><span>取得単位2大学分取得</span></li>
-                        <li class="flex items-start gap-3 text-slate-200"><span class="check-pill">✓</span><span>大学院専攻で専攻賞受賞</span></li>
+                        <li class="flex items-start gap-3 text-slate-200"><span class="check-pill">✓</span><span>2大学卒業分の単位取得</span></li>
+                        <li class="flex items-start gap-3 text-slate-200"><span class="check-pill">✓</span><span>大学院で専攻賞受賞</span></li>
                     </ul>
                 </div>
             </section>
