@@ -5,41 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>散焦楼のホームページ</title>
     <link rel="icon" href="self-portrait.png" type="image/png">
-
+    
     <script src="https://cdn.tailwindcss.com"></script>
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
-        :root {
-            --bg: #0f172a;
-            --bg-soft: #111827;
-            --panel: rgba(17, 24, 39, 0.92);
-            --panel-2: rgba(30, 41, 59, 0.92);
-            --border: rgba(148, 163, 184, 0.18);
-            --text: #f8fafc;
-            --muted: #cbd5e1;
-            --subtle: #94a3b8;
-            --accent: #22d3ee;
-            --accent-strong: #06b6d4;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Inter', 'Noto Sans JP', sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             background:
-                radial-gradient(circle at top, rgba(34, 211, 238, 0.05), transparent 24%),
+                radial-gradient(circle at top, rgba(34,211,238,0.06), transparent 24%),
                 linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
-            color: var(--text);
+            color: #f8fafc;
         }
 
         .dotted-background {
@@ -47,47 +30,65 @@
             background-size: 1rem 1rem;
         }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-section {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
         .navbar-blur {
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            background: rgba(15, 23, 42, 0.84);
-            border-bottom: 1px solid rgba(148, 163, 184, 0.10);
+            background: rgba(15, 23, 42, 0.86);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.12);
         }
 
-        .panel {
-            background: var(--panel);
-            border: 1px solid var(--border);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+        .section-panel {
+            background: rgba(17, 24, 39, 0.92);
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.24);
         }
 
         .hero-panel {
-            position: relative;
-            overflow: hidden;
             background:
                 linear-gradient(180deg, rgba(30, 41, 59, 0.96), rgba(15, 23, 42, 0.96));
-            border: 1px solid var(--border);
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+            overflow: hidden;
         }
 
-        .hero-panel::after {
+        .hero-title {
+            background: linear-gradient(90deg, #67e8f9 0%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.65rem;
+        }
+
+        .section-title::after {
             content: "";
             position: absolute;
-            inset: auto -6rem -6rem auto;
-            width: 16rem;
-            height: 16rem;
-            background: radial-gradient(circle, rgba(34,211,238,0.08), transparent 68%);
-            pointer-events: none;
-        }
-
-        .section-card {
-            border-radius: 1.25rem;
-            transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
-        }
-
-        .section-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(34, 211, 238, 0.22);
-            box-shadow: 0 16px 34px rgba(0, 0, 0, 0.30);
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 3.5rem;
+            height: 3px;
+            border-radius: 9999px;
+            background: #22d3ee;
         }
 
         .nav-link {
@@ -101,7 +102,7 @@
             bottom: -0.35rem;
             width: 0;
             height: 2px;
-            background: var(--accent);
+            background: #22d3ee;
             transition: width 0.2s ease;
         }
 
@@ -109,36 +110,18 @@
             width: 100%;
         }
 
-        .section-title {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 0.7rem;
-        }
-
-        .section-title::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: 0;
-            width: 3.75rem;
-            height: 3px;
-            border-radius: 9999px;
-            background: var(--accent);
-        }
-
-        .timeline-wrap {
+        .timeline-line {
             position: relative;
         }
 
-        .timeline-wrap::before {
+        .timeline-line::before {
             content: "";
             position: absolute;
             left: 0;
-            top: 0.3rem;
-            bottom: 0.3rem;
+            top: 0.25rem;
+            bottom: 0.25rem;
             width: 2px;
-            background: linear-gradient(180deg, rgba(34,211,238,0.45), rgba(34,211,238,0.10));
+            background: linear-gradient(180deg, rgba(34,211,238,0.45), rgba(34,211,238,0.12));
         }
 
         .timeline-item {
@@ -149,52 +132,20 @@
             box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.08);
         }
 
-        .list-chip {
-            background: rgba(15, 23, 42, 0.78);
+        .soft-card {
+            background: rgba(15, 23, 42, 0.8);
             border: 1px solid rgba(148, 163, 184, 0.14);
-            color: var(--muted);
-            border-radius: 0.85rem;
-            transition: background-color 0.2s ease, border-color 0.2s ease;
-        }
-
-        .list-chip:hover {
-            background: rgba(15, 23, 42, 0.96);
-            border-color: rgba(34, 211, 238, 0.20);
         }
 
         .soft-button {
             background: #1f2937;
             border: 1px solid rgba(148, 163, 184, 0.16);
-            color: #f8fafc;
             transition: all 0.2s ease;
         }
 
         .soft-button:hover {
             background: #273449;
             border-color: rgba(34, 211, 238, 0.24);
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-section {
-            animation: fadeIn 0.7s ease-out forwards;
-        }
-
-        .muted {
-            color: var(--muted);
-        }
-
-        .subtle {
-            color: var(--subtle);
         }
     </style>
 </head>
@@ -206,7 +157,7 @@
 
     <nav id="navbar" class="navbar-blur sticky top-0 z-40 transition-all duration-300">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl font-black text-white tracking-wide">散焦楼HP</a>
+            <a href="#" class="text-2xl font-bold text-white">散焦楼HP</a>
             <div id="desktop-nav" class="hidden md:flex space-x-6 items-center">
                 <a href="#about" class="nav-link text-slate-200 hover:text-cyan-300 transition">自己紹介</a>
                 <a href="#career" class="nav-link text-slate-200 hover:text-cyan-300 transition">認識経歴</a>
@@ -223,7 +174,6 @@
                 </button>
             </div>
         </div>
-
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
              <a href="#about" class="nav-link block py-2 text-slate-200 hover:text-cyan-300 transition">自己紹介</a>
              <a href="#career" class="nav-link block py-2 text-slate-200 hover:text-cyan-300 transition">認識経歴</a>
@@ -241,12 +191,12 @@
     </nav>
 
     <main class="container mx-auto px-6">
+        
         <div id="main-content">
-
             <section class="py-16 fade-in-section">
-                <div class="hero-panel rounded-3xl text-center min-h-[70vh] flex flex-col justify-center items-center p-8">
+                <div class="hero-panel relative rounded-2xl text-center min-h-[70vh] flex flex-col justify-center items-center p-8">
                     <h1 class="text-4xl md:text-6xl font-black text-white leading-tight">
-                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-sky-400">
+                        <span class="hero-title">
                             散焦楼の<br>ホームページ
                         </span>
                     </h1>
@@ -255,7 +205,7 @@
             </section>
 
             <section id="about" class="py-16 scroll-mt-20 fade-in-section">
-                <div class="panel section-card p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                <div class="section-panel rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 md:gap-12">
                     <img src="self-portrait.png" onerror="this.onerror=null; this.src='https://placehold.co/200x200/1F2937/7DD3FC?text=S';" alt="プロフィール画像" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-cyan-400 shadow-lg">
                     <div class="text-center md:text-left">
                         <h2 class="text-4xl font-bold text-white">散焦楼</h2>
@@ -268,121 +218,107 @@
 
             <section id="career" class="py-16 scroll-mt-20 fade-in-section">
                 <h2 class="section-title text-4xl font-bold text-center text-white mb-12"><span class="text-cyan-400">#</span> 認識経歴</h2>
-                <div class="max-w-3xl mx-auto panel section-card rounded-2xl p-8 md:p-12">
-                    <div class="timeline-wrap ml-6">
-                        <div class="timeline-item mb-12 ml-12">
-                            <div class="timeline-dot absolute -left-[13px] mt-2 w-6 h-6 bg-slate-900 border-2 border-cyan-400 rounded-full"></div>
-                            <p class="text-sm text-cyan-300 font-medium">2026年4月 - 現在</p>
+
+                <div class="max-w-3xl mx-auto section-panel rounded-2xl p-8 md:p-12">
+                    <div class="timeline-line ml-4 md:ml-6">
+
+                        <div class="timeline-item mb-12 ml-8 md:ml-12">
+                            <div class="timeline-dot absolute -left-[43px] md:-left-[51px] top-1 w-5 h-5 bg-slate-900 border-2 border-cyan-400 rounded-full"></div>
+                            <p class="text-sm font-medium text-cyan-300">2026年4月 - 現在</p>
                             <h3 class="text-xl font-bold text-white mt-1">双守電気通信工業会社</h3>
                         </div>
 
-                        <div class="timeline-item mb-12 ml-12">
-                            <div class="timeline-dot absolute -left-[13px] mt-2 w-6 h-6 bg-slate-900 border-2 border-cyan-400 rounded-full"></div>
-                            <p class="text-sm text-cyan-300 font-medium">2024年4月 - 2026年3月</p>
+                        <div class="timeline-item mb-12 ml-8 md:ml-12">
+                            <div class="timeline-dot absolute -left-[43px] md:-left-[51px] top-1 w-5 h-5 bg-slate-900 border-2 border-cyan-400 rounded-full"></div>
+                            <p class="text-sm font-medium text-cyan-300">2024年4月 - 2026年3月</p>
                             <h3 class="text-xl font-bold text-white mt-1">月守理工科大学大学院　電脳工学研究科</h3>
-                            <p class="text-slate-300 leading-relaxed">
+                            <p class="mt-2 text-slate-200 leading-relaxed">
                                 システム知性哲学専攻<br>
-                                <span class="whitespace-nowrap text-slate-200 text-sm md:text-base">Completed Cybersecurity Program</span><br>
+                                Cybersecurityプログラム修了<br>
                                 専攻賞受賞
                             </p>
                         </div>
 
-                        <div class="timeline-item mb-12 ml-12">
-                            <div class="timeline-dot absolute -left-[13px] mt-2 w-6 h-6 bg-slate-900 border-2 border-cyan-400 rounded-full"></div>
-                            <p class="text-sm text-cyan-300 font-medium">2020年4月 - 2024年3月</p>
+                        <div class="timeline-item mb-12 ml-8 md:ml-12">
+                            <div class="timeline-dot absolute -left-[43px] md:-left-[51px] top-1 w-5 h-5 bg-slate-900 border-2 border-cyan-400 rounded-full"></div>
+                            <p class="text-sm font-medium text-cyan-300">2020年4月 - 2024年3月</p>
                             <h3 class="text-xl font-bold text-white mt-1">月守理工科大学　電脳工学部</h3>
-                            <p class="text-slate-300">システム知性哲学科</p>
+                            <p class="mt-2 text-slate-200 leading-relaxed">システム知性哲学科</p>
                         </div>
 
-                        <div class="timeline-item ml-12">
-                            <div class="timeline-dot absolute -left-[13px] mt-2 w-6 h-6 bg-slate-900 border-2 border-cyan-400 rounded-full"></div>
-                            <p class="text-sm text-cyan-300 font-medium">2017年4月 - 2020年3月</p>
+                        <div class="timeline-item ml-8 md:ml-12">
+                            <div class="timeline-dot absolute -left-[43px] md:-left-[51px] top-1 w-5 h-5 bg-slate-900 border-2 border-cyan-400 rounded-full"></div>
+                            <p class="text-sm font-medium text-cyan-300">2017年4月 - 2020年3月</p>
                             <h3 class="text-xl font-bold text-white mt-1">晴守南高等学校　普通科</h3>
                         </div>
+
                     </div>
                 </div>
             </section>
 
             <section id="shikaku" class="py-16 scroll-mt-20 fade-in-section">
                 <h2 class="section-title text-4xl font-bold text-center text-white mb-12"><span class="text-cyan-400">#</span> 取得資格</h2>
-                <div class="max-w-3xl mx-auto panel section-card rounded-2xl p-8">
+                <div class="max-w-3xl mx-auto section-panel rounded-2xl p-8">
                     <ul class="space-y-4 text-slate-200">
-                        <li class="list-chip p-3">2019年5月　弓道初段　取得</li>
-                        <li class="list-chip p-3">2021年11月 基本情報技術者試験　合格</li>
-                        <li class="list-chip p-3">2022年2月　第一級陸上特殊無線技士　取得</li>
-                        <li class="list-chip p-3">2022年3月　普通自動車第一種運転免許(AT限定)　取得</li>
-                        <li class="list-chip p-3">2022年6月　応用情報技術者試験　合格</li>
-                        <li class="list-chip p-3">2024年3月　高等学校教諭一種免許状(数学)　取得</li>
-                        <li class="list-chip p-3">2024年3月　高等学校教諭一種免許状(工業)　取得</li>
-                        <li class="list-chip p-3">2024年3月　高等学校教諭一種免許状(情報)　取得</li>
-                        <li class="list-chip p-3">2025年7月　3級ファイナンシャル・プランニング技能士</li>
-                        <li class="list-chip p-3">2026年3月　高等学校教諭専修免許状(情報)　取得</li>
+                        <li class="soft-card p-3 rounded-lg">2019年5月　弓道初段　取得</li>
+                        <li class="soft-card p-3 rounded-lg">2021年11月 基本情報技術者試験　合格</li>
+                        <li class="soft-card p-3 rounded-lg">2022年2月　第一級陸上特殊無線技士　取得</li>
+                        <li class="soft-card p-3 rounded-lg">2022年3月　普通自動車第一種運転免許(AT限定)　取得</li>
+                        <li class="soft-card p-3 rounded-lg">2022年6月　応用情報技術者試験　合格</li>
+                        <li class="soft-card p-3 rounded-lg">2024年3月　高等学校教諭一種免許状(数学)　取得</li>
+                        <li class="soft-card p-3 rounded-lg">2024年3月　高等学校教諭一種免許状(工業)　取得</li>
+                        <li class="soft-card p-3 rounded-lg">2024年3月　高等学校教諭一種免許状(情報)　取得</li>
+                        <li class="soft-card p-3 rounded-lg">2025年7月　3級ファイナンシャル・プランニング技能士</li>
+                        <li class="soft-card p-3 rounded-lg">2026年3月　高等学校教諭専修免許状(情報)　取得</li>
                     </ul>
                 </div>
             </section>
 
             <section id="hobby" class="py-16 scroll-mt-20 fade-in-section">
                 <h2 class="section-title text-4xl font-bold text-center text-white mb-12"><span class="text-cyan-400">#</span> 趣味</h2>
-                <div class="max-w-3xl mx-auto panel section-card rounded-2xl p-8">
+                <div class="max-w-3xl mx-auto section-panel rounded-2xl p-8">
                     <div class="space-y-6">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center">
-                                    <i class="fas fa-film text-cyan-400 fa-2x fa-fw"></i>
-                                </div>
+                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center"><i class="fas fa-film text-cyan-400 fa-2x fa-fw"></i></div>
                                 <h3 class="text-xl font-bold text-white">アニメ</h3>
                             </div>
-                            <a href="#hobby" class="soft-button font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                            <a href="#hobby" class="soft-button text-white font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
-
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center">
-                                    <i class="fas fa-map-location-dot text-cyan-400 fa-2x fa-fw"></i>
-                                </div>
+                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center"><i class="fas fa-map-location-dot text-cyan-400 fa-2x fa-fw"></i></div>
                                 <h3 class="text-xl font-bold text-white">
                                     <span class="hidden md:inline">旅行(聖地巡礼)</span>
                                     <span class="md:hidden">旅行<br>(聖地巡礼)</span>
                                 </h3>
                             </div>
-                            <a href="#hobby" class="soft-button font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                            <a href="#hobby" class="soft-button text-white font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
-
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center">
-                                    <i class="fas fa-horse text-cyan-400 fa-2x fa-fw"></i>
-                                </div>
+                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center"><i class="fas fa-horse text-cyan-400 fa-2x fa-fw"></i></div>
                                 <h3 class="text-xl font-bold text-white">競馬</h3>
                             </div>
-                            <a href="#hobby" class="soft-button font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                            <a href="#hobby" class="soft-button text-white font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
-
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center">
-                                    <i class="fas fa-comments text-cyan-400 fa-2x fa-fw"></i>
-                                </div>
+                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center"><i class="fas fa-comments text-cyan-400 fa-2x fa-fw"></i></div>
                                 <h3 class="text-xl font-bold text-white">LLM対話</h3>
                             </div>
-                            <a href="#hobby" class="soft-button font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                            <a href="#hobby" class="soft-button text-white font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
-
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center">
-                                    <i class="fas fa-book-open text-cyan-400 fa-2x fa-fw"></i>
-                                </div>
+                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center"><i class="fas fa-book-open text-cyan-400 fa-2x fa-fw"></i></div>
                                 <h3 class="text-xl font-bold text-white"><s>読書</s></h3>
                             </div>
-                            <a href="#hobby" class="soft-button font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                            <a href="#hobby" class="soft-button text-white font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
-
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center">
-                                    <i class="fas fa-utensils text-cyan-400 fa-2x fa-fw"></i>
-                                </div>
+                                <div class="w-12 h-12 rounded-lg bg-cyan-400/10 border border-cyan-400/15 flex-shrink-0 flex items-center justify-center"><i class="fas fa-utensils text-cyan-400 fa-2x fa-fw"></i></div>
                                 <h3 class="text-xl font-bold text-white">
                                     <s>
                                         <span class="hidden md:inline">料理(最近)</span>
@@ -390,7 +326,7 @@
                                     </s>
                                 </h3>
                             </div>
-                            <a href="#hobby" class="soft-button font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
+                            <a href="#hobby" class="soft-button text-white font-bold py-2 px-4 rounded-lg"><span class="hidden md:inline">詳しく見る →</span><span class="md:hidden">詳しく</span></a>
                         </div>
                     </div>
                 </div>
@@ -398,16 +334,16 @@
 
             <section id="achievements" class="py-16 scroll-mt-20 fade-in-section">
                 <h2 class="section-title text-4xl font-bold text-center text-white mb-12"><span class="text-cyan-400">#</span> 主観実績</h2>
-                <div class="max-w-3xl mx-auto panel section-card rounded-2xl p-8">
-                    <ul class="space-y-4 text-slate-200">
-                        <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>自転車で千葉県縦断達成</li>
-                        <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>香川県で3食うどん達成</li>
-                        <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>山手線沿い1周ラン達成</li>
-                        <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>佐賀県内深夜雨中30km踏破</li>
-                        <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>ハーフマラソン大会初回2時間以内でゴール</li>
-                        <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>6大学の講義を受講して学生証6枚取得</li>
-                        <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>本州最端東西南北達成</li>
-                        <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">✓</span>学会で学生賞受賞</li>
+                <div class="max-w-3xl mx-auto section-panel rounded-2xl p-8">
+                    <ul class="space-y-4">
+                        <li class="flex items-start text-slate-200"><span class="text-cyan-400 mr-3 mt-1">✓</span>自転車で千葉県縦断達成</li>
+                        <li class="flex items-start text-slate-200"><span class="text-cyan-400 mr-3 mt-1">✓</span>香川県で3食うどん達成</li>
+                        <li class="flex items-start text-slate-200"><span class="text-cyan-400 mr-3 mt-1">✓</span>山手線沿い1周ラン達成</li>
+                        <li class="flex items-start text-slate-200"><span class="text-cyan-400 mr-3 mt-1">✓</span>佐賀県内深夜雨中30km踏破</li>
+                        <li class="flex items-start text-slate-200"><span class="text-cyan-400 mr-3 mt-1">✓</span>ハーフマラソン大会初回2時間以内でゴール</li>
+                        <li class="flex items-start text-slate-200"><span class="text-cyan-400 mr-3 mt-1">✓</span>6大学の講義を受講して学生証6枚取得</li>
+                        <li class="flex items-start text-slate-200"><span class="text-cyan-400 mr-3 mt-1">✓</span>本州最端東西南北達成</li>
+                        <li class="flex items-start text-slate-200"><span class="text-cyan-400 mr-3 mt-1">✓</span>学会で学生賞受賞</li>
                     </ul>
                 </div>
             </section>
@@ -439,13 +375,13 @@
             const loadingScreen = document.getElementById('loading-screen');
 
             setTimeout(() => {
-                if (loadingScreen) {
+                if(loadingScreen) {
                     loadingScreen.style.opacity = '0';
                     setTimeout(() => {
                         loadingScreen.style.display = 'none';
                     }, 500);
                 }
-            }, 1200);
+            }, 1500);
 
             mobileMenuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
