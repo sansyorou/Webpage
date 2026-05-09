@@ -1,2 +1,4 @@
+url: "https://sansyorou.github.io"
+baseurl: "/Webpage"
 plugins:
   - jekyll-sitemap
