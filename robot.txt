@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /Webpage/
+
+Sitemap: https://sansyorou.github.io/Webpage/sitemap.xml
