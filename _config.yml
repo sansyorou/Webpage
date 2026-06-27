@@ -1,4 +1,14 @@
+title: "散焦楼のホームページ"
+description: "散焦楼の個人ホームページ。プロフィール、経歴、資格、趣味、主観実績などを掲載しています。"
+
 url: "https://sansyorou.github.io"
 baseurl: "/Webpage"
+
 plugins:
   - jekyll-sitemap
+
+defaults:
+  - scope:
+      path: "google22562c9bd9ad2cf8.html"
+    values:
+      sitemap: false
